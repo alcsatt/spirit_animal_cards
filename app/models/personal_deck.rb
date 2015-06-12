@@ -1,3 +1,3 @@
 class PersonalDeck < Deck
-  # Remember to create a migration!
+  belongs_to :user
 end
