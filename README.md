@@ -12,5 +12,5 @@ Learn more about spirit animals. You can also learn about your personal spirit a
 
 created by: 
   - Alex Satterly
-  - Tom Goldenberg
+  [Tom Goldenberg](https://github.com/tgoldenberg)
   - Sihong Huang
