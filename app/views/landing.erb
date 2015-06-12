@@ -1,12 +1,27 @@
 <div class="row">
-  <div class="well">
-    <h1>Learn about spirit animals</h1>
-    <button class="btn btn-primary btn-lg">Sign Up</button>
-  </div>
-  <hr />
-  <% Card.first(3).each do |card| %>
-    <div class="col-md-4">
-      <img src="<%= card.image_url %>" height="300" />
+  <% if !@user %>
+    <div class="well">
+      <h1>Learn about Spirit Animals</h1>
+      <a href="/signup"><button class="btn btn-lg btn-primary">Sign up</button></a>
     </div>
+    <div class="col-md-12">
+      <% Card.all.first(3).each do |card| %>
+        <div class="col-md-4">
+          <img src="<%= card.image_url %>" height="300"/>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+  <div class="well">
+    <h1>Choose a deck!</h1>
+  </div>
+  <div class="col-md-12">
+    <% @decks.each do |deck| %>
+      <div class="col-md-4" style="display: block;">
+        <a href=""><button class="btn btn-success btn-lg"><%= deck.name %> </button></a><br/><hr/>
+        <img src="<%= deck.cards.first.image_url %>" height="300"/>
+      </div>
+    <% end %>
+  </div>
   <% end %>
 </div>

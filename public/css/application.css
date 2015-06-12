@@ -12,10 +12,26 @@ nav {
   margin-top: 1em;
 }
 .col-md-4 {
+  display: block;
   text-align: center;
-  border-right: 1px solid #e6e6e6;
   padding: 1em;
 }
 button.btn.btn-primary, a {
   font-weight: 300;
+}
+.btn.btn-success {
+  width: 5em;
+}
+.navbar-nav {
+  display: flex;
+}
+h2.deck-title {
+  font-weight: 300;
+}
+nav .btn {
+  margin-top: 1em;
+}
+.form-control {
+  width: 70%;
+  margin: auto;
 }
