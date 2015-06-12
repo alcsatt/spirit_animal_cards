@@ -11,19 +11,20 @@ get '/games/:id' do
   @user = User.find(session[:user_id])
   @card = @game.deck.cards[@game.card_idx]
   @letters = ["a", "b", "c"]
-  @cards = [CardBehavior.all.shuffle.first.name, CardBehavior.all.shuffle.first.name, @card.answer ].shuffle
+  @cards = [([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, ([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, @card.answer ].shuffle
   erb :game
 end
 
 post '/games/:id/guess' do
-  @game = Game.find(:id)
-  card = @game.deck.cards[@game.card_idx]
-  if params[:selection] == card.answer
+  @game = Game.find(params[:id])
+  @card = @game.deck.cards[@game.card_idx]
+  if params[:selection] == @card.answer
     @game.card_idx += 1
     @game.right += 1
     @messages = ["correct!"]
     @game.save
-    if @game.card_idx == @game.deck.cards.length
+    if @game.card_idx == (@game.deck.cards.length)
+      @messages = ["Great Job! Try another deck..."]
       redirect '/'
     end
   else
@@ -31,5 +32,9 @@ post '/games/:id/guess' do
     @messages = ["try again you suck"]
     @game.save
   end
-  redirect "/games/#{@game.id}"
+  @card = @game.deck.cards[@game.card_idx]
+  @letters = ["a", "b", "c"]
+  @cards = [CardBehavior.all.shuffle.first.name, CardBehavior.all.shuffle.first.name, @card.answer ].shuffle
+  # redirect "/games/#{@game.id}"
+  erb :game
 end
