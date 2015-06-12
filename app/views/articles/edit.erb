@@ -1,0 +1,20 @@
+
+<form action="/articles/<%= @article.id %>/update" method="post" id="">
+  <input type="hidden" name="article_id" value="<%= @article.id %>" />
+  <input type="text" name="article[author]" value="<%= @article.author %>" placeholder="your name"/><br />
+  <br />
+  <input type="text" name="article[description]" value="<%= @article.description %>" placeholder="description" /><br />
+  <br />
+  <input type="text" name="article[price]" value="<%= @article.price %>" placeholder="price" /><br />
+  <br />
+
+  <p>Category type:</p>
+  <select name="article[category_id]">
+    <option value="">Please select</option>
+    <% @categories.each do |category| %>
+    <option value="<%= category.id %>" selected="selected"> <%= category.name %></option>
+    <% end %>
+  </select><br />
+  <br />
+  <input type="submit" />
+</form>
