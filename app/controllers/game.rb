@@ -1,4 +1,3 @@
-require 'pry'
 
 post '/games' do
   @deck = Deck.find(params[:deck_id])
@@ -7,8 +6,8 @@ post '/games' do
 end
 
 get '/games/:id' do
-  @game = Game.find(params[:id])
-  @user = User.find(session[:user_id])
+  @game = current_game_by_id(params[:id])
+  @user = current_user
   @card = @game.deck.cards[@game.card_idx]
   @letters = ["a", "b", "c"]
   @cards = [([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, ([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, @card.answer ].shuffle
@@ -16,7 +15,7 @@ get '/games/:id' do
 end
 
 post '/games/:id/guess' do
-  @game = Game.find(params[:id])
+  @game = current_game_by_id(params[:id])
   @card = @game.deck.cards[@game.card_idx]
   if params[:selection] == @card.answer
     @game.card_idx += 1
