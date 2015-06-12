@@ -1,7 +1,0 @@
-<h1>Categories Page</h1>
-<h2>Encrypted url: <%= @key %></h2>
-<% @categories.each do |category| %>
-  <a href="/categories/<%= category.id %>"> <%= category.name %></p>
-<% end %>
-
-<button><a href="/articles/new">Create a new article!</a></button>
