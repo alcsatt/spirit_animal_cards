@@ -1,6 +1,6 @@
 # Spirit Animal Cards
 
-This is a basic **Sinatra** app for learning about __spirit__animals__. You can log in and then choose a spirit animal deck. There are 
+This is a basic **Sinatra** app for learning about __spirit animals__. You can log in and then choose a spirit animal deck. There are 
   * land animals 
   * sky animals 
   * water animals
