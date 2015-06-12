@@ -9,5 +9,20 @@ get '/games/:id' do
 end
 
 post '/games/:id/guess' do
-
+  @game = Game.find(:id)
+  card = @game.deck.cards[@game.card_idx]
+  if params[:selection] == card.answer
+    @game.card_idx += 1
+    @game.right += 1
+    @messages = ["correct!"]
+    @game.save
+    if @game.card_idx == @game.deck.cards.length
+      redirect '/'
+    end
+  else
+    @game.wrong += 1
+    @messages = ["try again you suck"]
+    @game.save
+  end
+  redirect "/games/#{@game.id}"
 end
