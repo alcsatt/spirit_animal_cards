@@ -1,5 +1,5 @@
 get '/' do
-  erb :'login_signup.erb'
+  erb :'landing'
 end
 
 post '/' do

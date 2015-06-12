@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="well">
+    <h1>Learn about spirit animals</h1>
+    <button class="btn btn-primary btn-lg">Sign Up</button>
+  </div>
+  <hr />
+  <% Card.first(3).each do |card| %>
+    <div class="col-md-4">
+      <img src="<%= card.image_url %>" height="300" />
+    </div>
+  <% end %>
+</div>

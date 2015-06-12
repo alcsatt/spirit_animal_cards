@@ -1,9 +1,21 @@
-.container {
-  margin: 20px auto;
-  width: 600px;
-  padding: 0px 20px 20px 20px;
-  border: 1px dotted black;
+nav {
+  border-radius: 0;
 }
-th {
-  text-align: left;
+.well {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+}
+.well h1 {
+  font-weight: 300;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+.col-md-4 {
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+  padding: 1em;
+}
+button.btn.btn-primary, a {
+  font-weight: 300;
 }
