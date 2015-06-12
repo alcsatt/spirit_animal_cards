@@ -1,4 +1,5 @@
 require 'faker'
+require 'pry'
 
 QUESTION = "This spirit animals has the following behavior: "
 
@@ -62,7 +63,7 @@ SKY_ANIMALS = {
   },
   hummingbird: {
     url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTWyEItrSAxEY_4rPBcqJACoeez2EgMeBQPxjvEQ_lcngzvNuYD",
-    answer: , "it generally symbolizes joy and playfulness, as well as adaptability.",
+    answer: "it generally symbolizes joy and playfulness, as well as adaptability.",
     description: "The hummingbird spirit animal symbolizes the enjoyment of life and lightness of being. Those who have the hummingbird as a totem are invited to enjoy the sweetness of life, lift up negativity wherever it creeps in and express love more fully in their daily endeavors. This fascinating bird is capable of the most amazing feats despite its small size, such as traveling great distances or being able to fly backwards. By affinity with the hummingbird, those who have this bird as totem may be encouraged to develop their adaptability and resiliency while keeping a playful and optimistic outlook.",
     deck_id: 3
 
@@ -175,7 +176,7 @@ LAND_ANIMALS = {
   },
 
   coyote: {
-    url: "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/24/1a/241a501174dc8333c9ae6d98e8301ece.jpg?itok=T3P-TPW2"
+    url: "http://cdn2-b.examiner.com/sites/default/files/styles/image_content_width/hash/24/1a/241a501174dc8333c9ae6d98e8301ece.jpg?itok=T3P-TPW2",
     answer: "it often symbolizes the trickster or joker, but is also associated with a deep magic of life and creation.",
     description: "The coyote totem is strikingly paradoxical and is hard to categorize. It’s a teacher of hidden wisdom with a sense of humor, so the messages of the coyote spirit animal may paradoxically appear in the form of a joke or trickery. Don’t be tricked by the foolish appearances. The spirit of the coyote may remind you to not take things too seriously and bring more balance between wisdom and playfulness.",
     deck_id: 3
@@ -186,26 +187,31 @@ LAND_ANIMALS = {
 DECKS = ["sky", "land", "water"]
 
 DECKS.each do |deck|
-  Deck.create(name: deck)
+  DefaultDeck.create(name: deck)
 end
 
 DefaultDeck.all.each do |deck|
   case deck.name
   when "sky"
-    then SKY_ANIMALS.each do |animal|
-      Card.create(name: animal.keys.to_s, answer: animal[:answer], image_url: animal[:url], description: animal[:description], deck_id: deck.id)
+    then SKY_ANIMALS.each do |animal, value|
+
+      Card.create(name: animal.to_s,
+                  answer: value[:answer],
+                  image_url: value[:url],
+                  description: value[:description],
+                  deck_id: deck.id)
     end
   when "land"
-    then LAND_ANIMALS.each do |animal|
-      Card.create(name: animal.keys.to_s, answer: animal[:answer], image_url: animal[:url], description: animal[:description], deck_id: deck.id)
+    then LAND_ANIMALS.each do |animal, value|
+      Card.create(name: animal.to_s, answer: value[:answer], image_url: value[:url], description: value[:description], deck_id: deck.id)
     end
   when "water"
-    then WATER_ANIMALS.each do |animal|
-      Card.create(name: animal.keys.to_s, answer: animal[:answer], image_url: animal[:url], description: animal[:description], deck_id: deck.id)
+    then WATER_ANIMALS.each do |animal, value|
+      Card.create(name: animal.to_s, answer: value[:answer], image_url: value[:url], description: value[:description], deck_id: deck.id)
     end
   end
 end
 
 BEHAVIORS.each do |behavior|
-  Behavior.create(name: behavior)
+  CardBehavior.create(name: behavior)
 end
