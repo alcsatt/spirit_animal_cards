@@ -1,0 +1,16 @@
+<h1> <%= @category.name %></h1>
+
+<table>
+  <tbody>
+    <% @articles.each do |article| %>
+    <tr>
+      <th> <%= article.created_at.strftime("%d %b. %Y") %></th>
+      <th> <a href="/articles/<%= article.id %>"><%= article.title %></a></th>
+      <th> $<%= article.price %></th>
+      <th> <%= article.author %></th>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<button><a href="/">Home</a></button>

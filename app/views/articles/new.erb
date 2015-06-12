@@ -1,0 +1,18 @@
+<form action="/articles" method="post" id="">
+  <input type="text" name="article[author]" placeholder="your name"/><br />
+  <br />
+  <input type="text" name="article[description]" placeholder="description" /><br />
+  <br />
+  <input type="text" name="article[price]" placeholder="price" /><br />
+  <br />
+  
+  <p>Category type:</p>
+  <select name="article[category_id]">
+    <option value="">Please select</option>
+    <% @categories.each do |category| %>
+    <option value="<%= category.id %>" selected="selected"> <%= category.name %></option>
+    <% end %>
+  </select><br />
+  <br />
+  <input type="submit" />
+</form>
