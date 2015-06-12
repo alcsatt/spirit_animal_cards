@@ -1,6 +1,9 @@
 nav {
   border-radius: 0;
 }
+.row {
+  text-align: center;
+}
 .well {
   width: 70%;
   margin: auto;
@@ -34,4 +37,10 @@ nav .btn {
 .form-control {
   width: 70%;
   margin: auto;
+}
+.table * {
+  text-align: left;
+}
+.button-wrapper button.btn.btn-lg {
+  width: 10em;
 }
