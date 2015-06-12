@@ -11,6 +11,6 @@
 Learn more about spirit animals. You can also learn about your personal spirit animal and what makes you unique! 
 
 created by: 
-  - Alex Satterly
-  [Tom Goldenberg](https://github.com/tgoldenberg)
-  - Sihong Huang
+  - [Alex Satterly](https://github.com/alcsatt)
+  - [Tom Goldenberg](https://github.com/tgoldenberg)
+  - [Sihong Huang](https://github.com/Sihong31)
