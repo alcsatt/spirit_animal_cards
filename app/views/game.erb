@@ -15,8 +15,8 @@
         <p> <%= message %></p>
         <% end %>
       <% end %>
-      <h1><%= @game.deck.cards[@game.card_idx].name %></h1>
-      <img src="<%= @game.deck.cards[@game.card_idx].image_url %>" height="250" />
+      <h1><%= current_card.name %></h1>
+      <img src="<%= current_card.image_url %>" height="250" />
     </div>
     <div class="col-md-9">
       <h3>This spirit animal has the following attribute: </h3>

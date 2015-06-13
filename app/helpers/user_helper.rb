@@ -6,6 +6,10 @@ def current_user
   end
 end
 
-def find_user_by_email(email)
-  User.find_by(email: email)
-end
+# def create_user(user_data)
+#   User.create(email: user_data[:email], password: user_data[:pw])
+# end
+
+# def find_user_by_email(email)
+#   User.find_by(email: email)
+# end

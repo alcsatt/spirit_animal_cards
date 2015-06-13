@@ -3,7 +3,7 @@ get '/' do
   erb :'landing'
   if session[:user_id]
     @user = current_user
-    @decks = DefaultDeck.all
+    @decks = DefaultDeck.all_decks
   end
   erb :landing
 end
@@ -18,7 +18,7 @@ get '/login' do
 end
 
 post '/login' do
-  @user = find_user_by_email(params[:email])
+  @user = User.find_user_by_email(params[:email])
   if @user.password == params[:password]
     session[:user_id] = @user.id
     redirect '/'
@@ -36,9 +36,9 @@ end
 
 ## create user
 post '/signup' do
-  user = find_user_by_email(params[:email])       #User.find_by(email: params[:email])
+  user = User.find_user_by_email(params[:email])
   unless user
-    @user = User.create(email: params[:email], password: params[:password])
+    @user = User.create_user(email: params[:email], pw: params[:password])
     session[:user_id] = @user.id
     redirect '/'
   else
