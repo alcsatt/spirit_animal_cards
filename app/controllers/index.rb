@@ -23,7 +23,6 @@ post '/login' do
   else
     @messages = ["invalid username or password"]
     erb :login
-
   end
 end
 

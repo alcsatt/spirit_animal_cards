@@ -1,0 +1,6 @@
+<div class="col-md-3">
+  <form action="/games/<%= @game.id %>/guess" method="post">
+    <input type="hidden" name="selection" value="<%= card %>">
+    <input type="submit" name="name" value="<%= @letters[idx] %>" class="btn btn-lg btn-<%= @btn_types[idx] %>">
+  </form>
+</div>
