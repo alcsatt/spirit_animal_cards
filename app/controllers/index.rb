@@ -1,10 +1,8 @@
 
 get '/' do
-  erb :'landing'
-  if session[:user_id]
-    @user = current_user
-    @decks = DefaultDeck.all_decks
-  end
+  @user = current_user
+  @decks = DefaultDeck.all_decks
+  @cards_to_display = Card.all.first(3)
   erb :landing
 end
 

@@ -28,9 +28,7 @@
           <% @cards.each_with_index do |card, idx| %>
             <tr class="guesses">
               <th><%= @letters[idx] %>.</th>
-              <th>
-                 <%= card %>
-              </th>
+              <th><%= card %></th>
             </tr>
           <% end %>
         </tbody>
@@ -38,20 +36,20 @@
     </div>
     <div class="button-wrapper">
         <div class="col-md-3">
-          <form class="" action="/games/<%= @game.id %>/guess" method="post">
+          <form action="/games/<%= @game.id %>/guess" method="post">
             <input type="hidden" name="selection" value="<%= @cards[0] %>">
             <input type="submit" name="name" value="A" class="btn btn-lg btn-primary">
           </form>
 
         </div>
         <div class="col-md-3">
-          <form class="" action="/games/<%= @game.id %>/guess" method="post">
+          <form action="/games/<%= @game.id %>/guess" method="post">
             <input type="hidden" name="selection" value="<%= @cards[1] %>">
             <input type="submit" name="name" value="B" class="btn btn-lg btn-success">
           </form>
         </div>
         <div class="col-md-3">
-          <form class="" action="/games/<%= @game.id %>/guess" method="post">
+          <form action="/games/<%= @game.id %>/guess" method="post">
             <input type="hidden" name="selection" value="<%= @cards[2] %>">
             <input type="submit" name="name" value="C" class="btn btn-lg btn-warning">
           </form>
