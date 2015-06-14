@@ -8,9 +8,8 @@ end
 get '/games/:id' do
   @game = Game.current_game_by_id(params[:id])
   @user = current_user
-  @card = current_card
-  @letters = ["a", "b", "c"]
-  @cards = [([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, ([CardBehavior.all.shuffle] - [@card.answer]).flatten.first.name, @card.answer ].shuffle
+  set_curr_card_letters_btn_types
+  shuffle_answer_choices(@card.answer)
   erb :game
 end
 
@@ -18,20 +17,16 @@ post '/games/:id/guess' do
   @game = Game.current_game_by_id(params[:id])
   @card = current_card
   if params[:selection] == @card.answer
-    @game.correct_answer
-    @messages = ["correct!"]
+    @messages = @game.correct_answer
     @game.save
     if @game.card_idx == (@game.deck.cards.length)
-      @messages = ["Great Job! Try another deck..."]
       redirect '/'
     end
   else
-    @game.wrong_answer
-    @messages = ["try again you suck"]
+    @messages = @game.wrong_answer
     @game.save
   end
-  @card = current_card
-  @letters = ["a", "b", "c"]
-  @cards = [CardBehavior.all.shuffle.first.name, CardBehavior.all.shuffle.first.name, @card.answer ].shuffle
+  set_curr_card_letters_btn_types
+  shuffle_answer_choices
   erb :game
 end
